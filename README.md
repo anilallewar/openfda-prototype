@@ -36,7 +36,7 @@ The team included
  * One Devops Engineer (Anil Allewar) 
  
 The team was lead by Mayuresh Phadke. Each team member contributed to the Git repository.
-as evidenced by commits made by developers and devops engineer to the https://github.com/vectorcosulting/openfda-prototype/commits/master .
+as evidenced by commits made by developers and devops engineer to the https://github.com/vectorconsulting/openfda-prototype/commits/master .
 
 ### User Experience Design
 One of our experienced Team member analysed the end to end requirements, and proposed an high level flow of the Application. This was followed by quick picture based mockups and finally a working mockup in HTML5. Our overall design was inspired by industry UI Conventions by Twitter BootStrap and Zurb Foundation. 
