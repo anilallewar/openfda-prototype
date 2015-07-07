@@ -4,11 +4,13 @@
 [Click here to view the prototype](http://162.243.149.238/index.html)
 
 ## Description
-This tool presents the top ten adverse reactions reported. While the reports to FDA do not require that a causal relationship between a product and event be proven, and reports do not always contain enough detail to properly evaluate an event, we have provided the drill down on each adverse reaction to reflect the occurrence of SUSPECT drug reported in the adverse action report. The intent was to explore, understand and consume as many APIs related to adverse reaction and come up with an analytics solution that gives meaningful insight to further identify area of research. Prototype was built using data from https://open.fda.gov . 
+This tool presents the top ten adverse reactions reported. While the reports to FDA do not require that a causal relationship between a product and event be proven, and reports do not always contain enough detail to properly evaluate an event, we have provided the drill down on each adverse reaction to reflect the occurrence of SUSPECT drug reported in the adverse action report. The intent was to explore, understand and consume as many APIs related to adverse reaction and come up with an analytics solution that gives meaningful insight to further identify area of research. Prototype was built using data from https://open.fda.gov.
+
+The tool also lays out the data of food recall events per state for USA on a map, indicating which states have the most instances of food recall.
 
 ## Source code
 
-The Source code for the prototype is hosted at https://github.com/mayuresh/openfda-prototype
+The Source code for the prototype is hosted at https://github.com/vectorconsulting/openfda-prototype
 
 All the source files, installation documentation, readme.md file, supporting documentation, license file, evidence, test results etc. are uploaded here.
 
@@ -18,13 +20,13 @@ The container image for the prototype can be found - https://registry.hub.docker
 
 ## Approach (750 Word Limit):
 
-In this phase we went through the available apis and interviewed sample users to come up with a use case that would demo a solution that provides meaningful insight into the adverse reaction data. The use case described above provides drill down exploration capability from list of "Adverse drug reactions" to list of drugs that caused those reactions.
+In this phase we went through the available APIs and interviewed sample users to come up with a use case that would demo a solution that provides meaningful insight into the adverse reaction data. The use case described above provides drill down exploration capability from list of "Adverse drug reactions" to list of drugs that caused those reactions.
 
 While building the prototype, we followed "US Digital Services Playbook" as our guide to ensure we deliver successful Agile Service prototype.
 
 
 ### Requirements
-Our requirements began looking at the API of openFDA and understanding the capabilities of the system. This was followed by identifying a set of users and conducting the interviews. The data from the interviews and the research on the APIs lead us to requirements for "Visualizing data for adverse drug reactions". Next step was to identify the User Stories on an Internal Jira Server. These User Stories also recorded Functionality, Usability 508 compliance, Security and Technical considerations of the feature.
+The team began looking at the APIs of openFDA and understanding the capabilities of the system. This was followed by identifying a set of users and conducting the interviews. The data from the interviews and the research on the APIs lead us to requirements for "Visualizing data for adverse drug reactions" and "Visualizing Food recall patterns". Next step was to identify the User Stories on an Internal Jira Server. These User Stories also recorded Functionality, Usability 508 compliance, Security and Technical considerations of the feature.
 
 ### Team:
 
@@ -34,10 +36,9 @@ The team included
  * One Devops Engineer (Anil Allewar) 
  
 The team was lead by Mayuresh Phadke. Each team member contributed to the Git repository.
-as evidenced by commits made by developers and devops engineer to the https://github.com/mayuresh/openfda-prototype/commits/master .
+as evidenced by commits made by developers and devops engineer to the https://github.com/vectorcosulting/openfda-prototype/commits/master .
 
-
-### User Experince Design
+### User Experience Design
 One of our experienced Team member analysed the end to end requirements, and proposed an high level flow of the Application. This was followed by quick picture based mockups and finally a working mockup in HTML5. Our overall design was inspired by industry UI Conventions by Twitter BootStrap and Zurb Foundation. 
 One of the key requirements was to ensure the UI is responsive and accessible by any Modern Smartphone browsers and we think it meets the requirements
 
@@ -49,7 +50,7 @@ The first step was to determine top 10 adverse reactions.  The query returns med
 https://api.fda.gov/drug/event.json?search=seriousnesslifethreatening:1&limit=10&count=patient.drug.medicinalproduct.exact
 ```
 
-Once we chose the drug, we can drill down to the male participants(patientsex = 1 fr male; patientsex=2 for female and patientsex=0 for Unknown) using the URL format below.
+Once user chosses the drug, they can drill down numbers further by gender (patientsex = 1 for male; patientsex=2 for female and patientsex=0 for Unknown) using the URL format below.
 
 ```
 https://api.fda.gov/drug/event.json?search=seriousnesslifethreatening:1+AND+patient.drug.medicinalproduct:"ASPIRIN"+AND+patient.patientsex:1&limit=10
@@ -70,6 +71,13 @@ https://api.fda.gov/drug/event.json?search=receivedate:[2004-01-01+TO+2015-07-04
 https://api.fda.gov/drug/event.json?search=seriousnessdisabling:1
 https://api.fda.gov/drug/event.json?search=seriousnesshospitalization:1
 ```
+
+For visualizing Food recall we used the API
+```
+https://api.fda.gov/food/enforcement.json?&count=state
+```
+Using this API we laid out the numbers for food recall events per state on the map of USA.
+The states were color coded, with the states having colors according to instances of food recall. The color coding is explained on the page.
 
 We choose to keep the Design as Simple as Possible, using industry conventions for rapid development and low cost. 
 Following Frameworks were used for building this Prototype
