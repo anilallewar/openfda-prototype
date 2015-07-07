@@ -74,7 +74,7 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
+
                     <li><a href="index2.html">Adverse reations to drugs</a></li>
                     <li class="active"><a href="index3.html">Food recall</a></li>
                 </ul>
@@ -87,8 +87,9 @@
         <div class="col-lg-10">
             <br /><br /><br />
             <h1>Food recall enforcement report</h1>
-            <h4>Distribution across states, count of food recalls by state. Filter it by reason for recall.</h4>
-            <form>Product description : <input type="text" ng-model="criteria" placeholder="Enter text to filter e.g ice cream" size="50"></text><button type="submit" ng-click="reload();">Update</button></form><br>
+            <h4>The image below shows distribution of Food recall events across states.</h4>
+            <p>Filter further by product types that were recalled by entering Food types in the text box below. </p>
+            <form>Show recall events for product : <input type="text" ng-model="criteria" placeholder="Enter text to filter e.g ice cream" size="50"></text><button type="submit" ng-click="reload();">Update</button></form><br>
             No. of reports : Low <canvas id="myCanvas" width="578" height="10"></canvas> High<br>
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="959" height="593" id="usstates"></svg>
         </div>
